@@ -12,7 +12,9 @@ shape_of_turtle = "circle"
 
 color_of_turtle = "green"
 
-size_of_turtle = "5"
+size_of_turtle = 5
+
+score = 0
 
 #-----initialize turtle-----
 
@@ -22,18 +24,27 @@ rikhil.shape(shape_of_turtle)
 
 rikhil.color(color_of_turtle)
 
-rikhil.shapesize(int(size_of_turtle))
+rikhil.shapesize(size_of_turtle)
 
 #-----game functions--------
 
+
 def rikhil_clicked(x, y):
-  print("Rikhil was clicked!")
+  change_position()
 
-# def change_position():
-
+def change_position():
+  new_xpos = rand.randint(-400, 400)
+  new_ypos = rand.randint(-300, 300) 
+  rikhil.hideturtle()
+  rikhil.goto(new_xpos, new_ypos)
+  rikhil.showturtle()
+  
+def update_score():
+  
 
 #-----events----------------
 
+rikhil.penup()
 rikhil.onclick(rikhil_clicked)
 
 wn = trtl.Screen()
