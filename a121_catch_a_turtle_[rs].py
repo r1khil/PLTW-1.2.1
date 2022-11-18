@@ -16,9 +16,13 @@ size_of_turtle = 5
 
 score = 0
 
+font_setup = ("Arial", 20, "normal")
+
 #-----initialize turtle-----
 
 rikhil = trtl.Turtle()
+
+score_writer = trtl.Turtle()
 
 rikhil.shape(shape_of_turtle)
 
@@ -30,6 +34,8 @@ rikhil.shapesize(size_of_turtle)
 
 
 def rikhil_clicked(x, y):
+  update_score()
+
   change_position()
 
 def change_position():
@@ -42,13 +48,21 @@ def change_position():
 def update_score():
   global score # gives this function access to the score that was created above
   score += 1
-  print(score)
+  score_writer.clear()
+  score_writer.write(score, font=font_setup)  
+  
+  
+def score_setup():
+  score_writer.penup()
+  score_writer.hideturtle()
+  score_writer.goto(-300, 200)
 
 #-----events----------------
 
 rikhil.penup()
+
+score_setup()
 rikhil.onclick(rikhil_clicked)
-update_score()
 
 
 
