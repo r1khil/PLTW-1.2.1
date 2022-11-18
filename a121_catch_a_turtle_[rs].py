@@ -40,12 +40,18 @@ def change_position():
   rikhil.showturtle()
   
 def update_score():
-  
+  global score # gives this function access to the score that was created above
+  score += 1
+  print(score)
 
 #-----events----------------
 
 rikhil.penup()
 rikhil.onclick(rikhil_clicked)
+update_score()
+
+
+
 
 wn = trtl.Screen()
 wn.mainloop()
