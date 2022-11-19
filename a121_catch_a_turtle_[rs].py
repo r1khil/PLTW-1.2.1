@@ -18,11 +18,17 @@ score = 0
 
 font_setup = ("Arial", 20, "normal")
 
+timer = 30
+counter_interval = 1000   #1000 represents 1 second
+timer_up = False
+
 #-----initialize turtle-----
 
 rikhil = trtl.Turtle()
 
 score_writer = trtl.Turtle()
+
+counter =  trtl.Turtle()
 
 rikhil.shape(shape_of_turtle)
 
@@ -57,11 +63,28 @@ def score_setup():
   score_writer.hideturtle()
   score_writer.goto(-300, 200)
 
+
+def countdown():
+  global timer, timer_up
+  counter.clear()
+  if timer <= 0:
+    counter.write("Time's Up", font=font_setup)
+    timer_up = True
+  else:
+    counter.write("Timer: " + str(timer), font=font_setup)
+    timer -= 1
+    counter.getscreen().ontimer(countdown, counter_interval) 
+    
+def countdown_setup():
+  counter.penup()
+  counter.hideturtle()
+  counter.goto(300, 200)
 #-----events----------------
 
 rikhil.penup()
 
 score_setup()
+countdown_setup()
 rikhil.onclick(rikhil_clicked)
 
 
