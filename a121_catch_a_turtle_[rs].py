@@ -22,6 +22,8 @@ timer = 30
 counter_interval = 1000   #1000 represents 1 second
 timer_up = False
 
+wn = trtl.Screen()
+
 #-----initialize turtle-----
 
 rikhil = trtl.Turtle()
@@ -36,13 +38,18 @@ rikhil.color(color_of_turtle)
 
 rikhil.shapesize(size_of_turtle)
 
+# list_of_colors = ["yellow", "purple", "blue"]
+
 #-----game functions--------
 
 
 def rikhil_clicked(x, y):
-  update_score()
+  if timer_up == False:
+    update_score()
 
-  change_position()
+    change_position()
+  
+  
 
 def change_position():
   new_xpos = rand.randint(-400, 400)
@@ -55,13 +62,15 @@ def update_score():
   global score # gives this function access to the score that was created above
   score += 1
   score_writer.clear()
-  score_writer.write(score, font=font_setup)  
+  score_writer.write("Score: " + str(score), font=font_setup)  
   
   
 def score_setup():
   score_writer.penup()
   score_writer.hideturtle()
   score_writer.goto(-300, 200)
+  score_writer.write("Score: " + str(score), font=font_setup)  
+
 
 
 def countdown():
@@ -78,17 +87,19 @@ def countdown():
 def countdown_setup():
   counter.penup()
   counter.hideturtle()
-  counter.goto(300, 200)
+  counter.goto(200, 200)
 #-----events----------------
+
+wn.bgcolor("red")
 
 rikhil.penup()
 
 score_setup()
 countdown_setup()
+countdown()
 rikhil.onclick(rikhil_clicked)
 
 
 
 
-wn = trtl.Screen()
 wn.mainloop()
