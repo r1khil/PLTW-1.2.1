@@ -38,7 +38,6 @@ rikhil.color(color_of_turtle)
 
 rikhil.shapesize(size_of_turtle)
 
-# list_of_colors = ["yellow", "purple", "blue"]
 
 #-----game functions--------
 
